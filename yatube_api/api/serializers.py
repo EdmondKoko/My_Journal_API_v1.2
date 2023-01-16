@@ -33,7 +33,6 @@ class GroupSerializer(serializers.ModelSerializer):
 
 class FollowSerializer(serializers.ModelSerializer):
     user = serializers.SlugRelatedField(
-        slug_field='username',
         read_only=True,
         default=serializers.CurrentUserDefault())
     following = serializers.SlugRelatedField(
@@ -50,8 +49,7 @@ class FollowSerializer(serializers.ModelSerializer):
             )
         ]
 
-    def validate(self, following):
-        if self.context.get('request').user == following:
-            raise serializers.ValidationError(
-                'Нельзя подписаться на себя.')
-        return following
+    def validate(self, data):
+        if self.context['request'].user == data['following']:
+            raise serializers.ValidationError("Нельзя подписаться на себя")
+        return data
