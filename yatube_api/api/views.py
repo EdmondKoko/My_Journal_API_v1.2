@@ -1,12 +1,11 @@
-from django.contrib.auth import get_user_model
-from django.shortcuts import get_object_or_404
-from rest_framework import filters, permissions
-from rest_framework import viewsets
-
 from api.permissions import AuthorOrReadOnly
 from api.serializers import FollowSerializer, GroupSerializer
 from api.serializers import PostSerializer, CommentSerializer
+from django.contrib.auth import get_user_model
+from django.shortcuts import get_object_or_404
 from posts.models import Post, Follow, Group
+from rest_framework import filters, permissions
+from rest_framework import viewsets
 
 User = get_user_model()
 
