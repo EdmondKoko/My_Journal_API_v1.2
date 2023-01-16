@@ -2,13 +2,13 @@ from django.contrib.auth import get_user_model
 from rest_framework import serializers
 from rest_framework.relations import SlugRelatedField
 
-from posts.models import Comment, Post, Group, Follow
+from posts.models import Comment, Post, Follow, Group
 
 User = get_user_model()
 
 
 class PostSerializer(serializers.ModelSerializer):
-    author = SlugRelatedField(read_only=True, slug_field='username')
+    author = SlugRelatedField(slug_field='username', read_only=True)
 
     class Meta:
         fields = '__all__'
@@ -32,11 +32,14 @@ class GroupSerializer(serializers.ModelSerializer):
 
 
 class FollowSerializer(serializers.ModelSerializer):
-    user = serializers.SlugRelatedField(
+    user = serializers.StringRelatedField(
         read_only=True,
-        default=serializers.CurrentUserDefault())
+        default=serializers.CurrentUserDefault()
+    )
     following = serializers.SlugRelatedField(
-        slug_field='username', queryset=User.objects.all())
+        slug_field="username",
+        queryset=User.objects.all(),
+    )
 
     class Meta:
         model = Follow
@@ -51,5 +54,5 @@ class FollowSerializer(serializers.ModelSerializer):
 
     def validate(self, data):
         if self.context['request'].user == data['following']:
-            raise serializers.ValidationError("Нельзя подписаться на себя")
+            raise serializers.ValidationError("Нельзя на себя подписываться")
         return data
