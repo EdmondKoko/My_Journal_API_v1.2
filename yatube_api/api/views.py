@@ -42,6 +42,7 @@ class GroupViewSet(viewsets.ReadOnlyModelViewSet):
 class FollowViewSet(viewsets.ModelViewSet):
     queryset = Follow.objects.all()
     serializer_class = FollowSerializer
+    permission_classes = (AuthorOrReadOnly,)
     filter_backends = (filters.SearchFilter,)
     search_fields = ('following__username',)
 
