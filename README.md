@@ -36,18 +36,53 @@ http://localhost:port/redoc/
 
 - POST http://localhost:port/api/v1/posts/
 
+```
 {
   "text": "Любой текст",
   "group": 1
 }
+```
 
 #### Ответ
 
+```
 {
     "id": 1,
-    "author": "root",
+    "author": "User",
     "text": "Любой текст",
     "pub_date": "2015-03-04T00:00:00.000Z",
     "image": null,
     "group": 1
 }
+```
+#### GET-запрос, получение информации о сообществе по id=2.
+
+- GET http://localhost:port/api/v1/groups/2/
+
+#### Ответ
+
+```
+{
+    "id": 1
+    "title": "group2",
+    "slug": "group2",
+    "description": "group2"
+}
+```
+
+#### POST-запрос, подписка авторизованного пользователя от имени которого сделан запрос на автора интересующей публикации
+
+- POST http://localhost:port/api/v1/follow/
+```
+{
+  "following": "admin"
+}
+```
+#### Ответ
+```
+{
+    "id": 1,
+    "user": "User",
+    "following": "admin"
+}
+```
