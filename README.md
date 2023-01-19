@@ -1,23 +1,53 @@
 # API для Yatube
 
-#### API включает в себя посты, комментарии, подписчиков и группы. Авторизация реализованна через JWT-токен.
-
+## Описание проекта:
+#### Yatube - проект социальной сети. «API для Yatube» расширяет возможности социальной сети. Новый функционал позволяет пользователям публиковать свои посты и управлять подписками через программный интерфейс взаимодействия.
 ## Технологии
-Python, Django, Django REST Framework, SQLite3, Simple JWT, Django Filter.
+- Python - язык программирования.
+- Django - свободный фреймворк для веб-приложений на языке Python.
+- Django REST Framework - мощный и гибкий набор инструментов для создания веб-API.
+- Simple JWT - плагин аутентификации JSON Web Token для Django REST Framework.
 
-## Установка
-### Создайте виртуальное окружение:
+## Установка: 
 
-python -m venv venv
-### Активируйте его:
+### Клонировать репозиторий:
 
-source venv/Scripts/activate
+- git clone https://github.com/edmondkoko/api_final_yatube.git
+### Создайте и активиркйте виртуальное окружение:
+
+- python -m venv venv
+- source venv/Scripts/activate
 ### Используйте pip, чтобы установить зависимости:
 
-pip install -r requirements.txt
+- pip install -r requirements.txt
 ### Выполнить миграции:
 
-python3 manage.py migrate
+- python manage.py migrate
 ### Запустить проект:
 
-python3 manage.py runserver
+-  python manage.py runserver
+
+### После запуска проекта, документация будет доступна по адресу:
+http://localhost:port/redoc/
+
+### Примеры запросов:
+
+#### POST-запрос с токеном, добавление новой публикации в коллекцию публикаций.
+
+- POST http://localhost:port/api/v1/posts/
+
+{
+  "text": "Любой текст",
+  "group": 1
+}
+
+#### Ответ
+
+{
+    "id": 1,
+    "author": "root",
+    "text": "Любой текст",
+    "pub_date": "2015-03-04T00:00:00.000Z",
+    "image": null,
+    "group": 1
+}
