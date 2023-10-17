@@ -16,6 +16,7 @@ User = get_user_model()
 
 
 class PostViewSet(viewsets.ModelViewSet):
+  """Класс, представляющий API-интерфейс для модели `Post`"""
     queryset = Post.objects.all()
     serializer_class = PostSerializer
     permission_classes = (IsAuthorOrReadOnly,)
@@ -26,11 +27,13 @@ class PostViewSet(viewsets.ModelViewSet):
 
 
 class GroupViewSet(viewsets.ReadOnlyModelViewSet):
+  """Класс, представляющий API-интерфейс для модели `Group`."""
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
 
 
 class CommentViewSet(viewsets.ModelViewSet):
+  """Класс, представляющий API-интерфейс для модели `Comment`."""
     serializer_class = CommentSerializer
     permission_classes = (IsAuthorOrReadOnly,)
 
@@ -46,6 +49,7 @@ class CommentViewSet(viewsets.ModelViewSet):
 class FollowViewSet(mixins.ListModelMixin,
                     mixins.CreateModelMixin,
                     viewsets.GenericViewSet):
+    """Класс, представляющий API-интерфейс для модели `Follow`."""
     serializer_class = FollowSerializer
     permission_classes = (IsAuthenticated, IsAuthorOrReadOnly,)
     filter_backends = (SearchFilter,)
