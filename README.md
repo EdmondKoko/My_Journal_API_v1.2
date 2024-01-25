@@ -4,10 +4,10 @@
 ![JWT](https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=JSON%20web%20tokens)
 ![SQLite](https://img.shields.io/badge/SQLite-grey?style=for-the-badge&logo=postgresql&logoColor=yellow)
 
-# Yatube - социальная сеть для публикации личных дневников. 
+# My_Journal - социальная сеть для публикации личных дневников. 
 
 ## Описание:
-### API для Yatube.
+### API для My_Journal.
 
 В проекте реализовано:
 - У неаутентифицированных пользователей доступ к API только на уровне чтения.
@@ -24,13 +24,13 @@
 Клонируем проект:
 
 ```bash
-git clone https://github.com/edmondkoko/yatube_api_final.git
+git clone https://github.com/edmondkoko/My_Journal_API_v1.2.git
 ```
 
 Переходим в папку с проектом:
 
 ```bash
-cd yatube_api_final
+cd My_Journal_API_v1.2
 ```
 
 Устанавливаем виртуальное окружение:
